@@ -70,9 +70,32 @@
     });
 
 
-	/* Removes Long Focus On Buttons */
+	/* Removes Long Focus On Buttons */s
 	$(".button, a, button").mouseup(function() {
 		$(this).blur();
 	});
+
+
+
+  const toggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  // Load saved preference
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    toggle.checked = true;
+  }
+
+  toggle.addEventListener('change', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+
 
 })(jQuery);
